@@ -1,0 +1,15 @@
+# Palladium Server
+version: "3.7"
+
+services:
+  app:
+    image: figma-hook:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    expose:
+      - 8080
+    command:
+      ["--hostname", "0.0.0.0", "--port", "8080", "--migrate"]
