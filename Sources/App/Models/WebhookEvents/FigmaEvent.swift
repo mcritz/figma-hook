@@ -26,13 +26,13 @@ class FigmaEvent: Model, HBResponseCodable {
     var triggered_by: FigmaUser?
     
     @Field(key: "created_at")
-    var created_at: Date?
+    var created_at: String?
     @Field(key: "description")
     var description: String?
     @Field(key: "label")
     var label: String?
     @Field(key: "version_id")
-    var version_id: Int?
+    var version_id: String?
     
     @Field(key: "created_components")
     var created_components: [ComponentData]?
