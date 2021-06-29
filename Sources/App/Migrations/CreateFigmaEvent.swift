@@ -11,7 +11,7 @@ struct CreateFigmaEvent: Migration {
             .field("file_key", .string)
             .field("file_name", .string)
             .field("triggered_by", .data)
-            .field("created_at", .datetime)
+            .field("created_at", .string)
             .field("description", .string)
             .field("label", .string)
             .field("version_id", .string)
