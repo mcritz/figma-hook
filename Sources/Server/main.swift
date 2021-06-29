@@ -13,13 +13,13 @@ struct HummingbirdArguments: ParsableCommand, AppArguments {
     var migrate: Bool = false
 
     @Flag(name: .shortAndLong)
-    var inMemoryDatabase: Bool = false
+    var inMemoryDatabase: Bool = true
 
     func run() throws {
         let app = HBApplication(
             configuration: .init(
                 address: .hostname(self.hostname, port: self.port),
-                serverName: "Hummingbird"
+                serverName: "Figma Webhook"
             )
         )
         try app.configure(self)
