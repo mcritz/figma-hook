@@ -1,4 +1,4 @@
-# Palladium Server
+# Figma Webhook
 version: "3.7"
 
 services:
@@ -8,8 +8,8 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8080:8080"
+      - "80:8080"
     expose:
-      - 8080
+      - 80
     command:
       ["--hostname", "0.0.0.0", "--port", "8080", "--migrate"]

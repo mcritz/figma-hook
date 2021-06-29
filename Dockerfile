@@ -13,7 +13,6 @@ RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true \
 # Set up a build area
 WORKDIR /build
 
-
 # First just resolve dependencies.
 # This creates a cached layer that can be reused
 # as long as your Package.swift/Package.resolved
@@ -63,4 +62,4 @@ EXPOSE 8080
 
 # Start the Vapor service when the image is run, default to listening on 8080 in production environment
 ENTRYPOINT ["./Server"]
-CMD ["--hostname", "0.0.0.0", "--port", "8080"]
+CMD ["--hostname", "0.0.0.0", "--port", "8080", "--in-memory-database"]

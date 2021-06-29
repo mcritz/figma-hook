@@ -7,13 +7,17 @@ import NIO
 struct FigmaController {
     func addRoutes(to group: HBRouterGroup) {
         group
-//            .get(use: self.list)
+            .get(use: self.list)
 //            .get(":id", use: self.get)
             .post(use: self.create)
 //            .delete(use: self.deleteAll)
 //            .patch(use: self.update)
 //            .patch(":id", use: self.updateId)
 //            .delete(":id", use: self.deleteId)
+    }
+    
+    func list(_ request: HBRequest) -> EventLoopFuture<[FigmaEvent]> {
+        FigmaEvent.query(on: request.db).all()
     }
 
     func create(_ request: HBRequest) -> EventLoopFuture<FigmaEvent> {
