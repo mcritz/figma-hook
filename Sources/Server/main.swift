@@ -13,7 +13,7 @@ struct HummingbirdArguments: ParsableCommand, AppArguments {
     var migrate: Bool = false
 
     @Flag(name: .shortAndLong)
-    var inMemoryDatabase: Bool = true
+    var inMemoryDatabase: Bool = false
 
     func run() throws {
         let app = HBApplication(

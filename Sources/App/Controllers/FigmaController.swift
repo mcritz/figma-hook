@@ -16,7 +16,15 @@ struct FigmaController {
 //            .delete(":id", use: self.deleteId)
     }
 
-    func create(_ request: HBRequest) -> EventLoopFuture<[Todo]> {
-        return Todo.query(on: request.db).all()
+    func create(_ request: HBRequest) -> EventLoopFuture<FigmaEvent> {
+        guard let figmaEvent = try? request.decode(as: FigmaEvent.self) else {
+            return request.failure(HBHTTPError(.badRequest))
+        }
+        return figmaEvent.save(on: request.db)
+            .map {
+                print("got event: \(figmaEvent.event_type)")
+                request.response.status = .created
+                return figmaEvent
+            }
     }
 }

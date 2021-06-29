@@ -1,6 +1,6 @@
 import Foundation
 
 struct FigmaUser: Codable {
-    let id: Int
+    let id: String
     let handle: String
 }

@@ -36,6 +36,7 @@ extension HBApplication {
         }
         // add migrations
         self.fluent.migrations.add(CreateTodo())
+        self.fluent.migrations.add(CreateFigmaEvent())
         // migrate
         if arguments.migrate || arguments.inMemoryDatabase {
             try self.fluent.migrate().wait()
@@ -46,7 +47,8 @@ extension HBApplication {
         }
         let todoController = TodoController()
         todoController.addRoutes(to: self.router.group("todos"))
-        // webhooks?
         
+        let figmaController = FigmaController()
+        figmaController.addRoutes(to: self.router.group("figma"))
     }
 }
